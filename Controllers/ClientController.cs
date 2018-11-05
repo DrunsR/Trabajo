@@ -35,5 +35,27 @@ namespace Trabajo.Controllers
             return View();
         }
 
+        public IActionResult RegistroClient()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult RegistroClient(Cliente c)
+        {
+            return View();
+        }
+        public IActionResult RegistroRestaurant()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult RegistroRestaurant(Restaurante r)
+        {
+            return View();
+        }
+
+
     }
 }
