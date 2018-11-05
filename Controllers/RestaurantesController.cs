@@ -8,5 +8,9 @@ namespace Trabajo.Controllers
         {
             return View();
         }
+        public IActionResult menus()
+        {
+            return View();
+        }
     }
 }
