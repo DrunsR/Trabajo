@@ -10,10 +10,7 @@ namespace Trabajo.Controllers
 {
     public class ClientController : Controller
     {
-        public IActionResult Inicio()
-        {
-            return View();
-        }
+
         public IActionResult InicioClient()
         {
             return View();
@@ -34,18 +31,9 @@ namespace Trabajo.Controllers
         {
             return View();
         }
-
-        public IActionResult RegistroClient()
-        {
-            return View();
-        }
         
         [HttpPost]
         public IActionResult RegistroClient(Cliente c)
-        {
-            return View();
-        }
-        public IActionResult RegistroRestaurant()
         {
             return View();
         }
