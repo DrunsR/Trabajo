@@ -19,7 +19,12 @@ namespace Trabajo.Controllers
         [HttpPost]
         public IActionResult InicioClient(Cliente c)
         {
-            return View();
+            if(!ModelState.IsValid){
+                
+                return RedirectToAction("Nosotros","Home");
+
+            }
+            return View(c);
         }
         public IActionResult InicioRestaurant()
         {
@@ -33,9 +38,14 @@ namespace Trabajo.Controllers
         }
         
         [HttpPost]
-        public IActionResult RegistroClient(Cliente c)
+        public IActionResult RegistroClient(registrocliente c)
         {
-            return View();
+            if(!ModelState.IsValid){
+                
+                return RedirectToAction("Nosotros","Home");
+
+            }
+            return View(c);
         }
         
         [HttpPost]
