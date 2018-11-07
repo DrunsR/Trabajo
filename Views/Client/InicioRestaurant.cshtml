@@ -14,12 +14,12 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<h1>Inicia sesion o registra tu propio restaurante</h1>
-<div class="container text-center">
-  
-    	<div class="row">
-			<div class="col-6 col-md-offset-3">
-				<div class="panel panel-login">
+
+<div class="container text-center" >
+  <h1>Inicia sesion o registra tu propio restaurante</h1>
+    	<div class="row" >
+			<div class="col-6 col-md-offset-3" style="margin:0 auto">
+				<div class="panel panel-login"> 
 					<div class="panel-heading">
 						<div class="row">
 							<div class="col-6">
@@ -34,7 +34,7 @@ $(document).ready(function(){
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form id="login" action="http://phpoll.com/login/process" method="post" role="form" style="display: block;">
+								<form id="login" action="~/Client/InicioRestaurant" method="post" role="form" style="display: block;">
 									<div class="form-group">
 										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Usuario" value="">
 									</div>
@@ -53,7 +53,7 @@ $(document).ready(function(){
 										</div>
 									</div>
 								</form>
-								<form id="register" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;">
+								<form id="register" action="~/Client/InicioRestaurant" method="post" role="form" style="display: none;">
 									<div class="form-group">
 										<input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Nombre del Propietario" value="">
 									</div>
