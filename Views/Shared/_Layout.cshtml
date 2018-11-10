@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -10,51 +12,97 @@
          
 </head>
 <body>
-
-
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-      <a class="navbar-brand" href="#">Reading to eat</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="~/">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="~/Restaurantes/Restaurantes">Restaurante</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="~/Home/Sugerencias">Sugerencias</a>
-          </li>
-          
-        </ul>
-        <div id="login" style="display:block">
-          <div  class="btn-group">
-            <a href="~/Client/InicioClient" type="button" class="btn btn-light float-left" id="Inicio">Iniciar Sesion</a>
-          
   
-          </div>
-        </div>
-        <div id="close" style="display:none">
-          <div  class="btn-group">
-                      <button type="button" class="btn btn-primary float-left" data-toggle="dropdown">Usuario</a>
-                  </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <ul class="px-3 py-3">
-                <li class="dropdown-item"><a href="~/Client/InicioClient" class="btn btn-secondary btn-md" type="button" aria-disabled="true" id="Cliente">Cliente</a> </li>
-                <div style="height:10px"></div>
-                <li class="dropdown-item"><a href="~/" class="btn btn-secondary btn-md" type="button" aria-disabled="true" id="Salir">Salir</a></li>
-              </ul>
+      
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container-fluid">
+           
 
-          </div>
+
+        
+              <a class="navbar-brand" href="#">Reading to eat</a>
+              <div class="col-lg-9">
+
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+         
+              <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="~/">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="~/Restaurantes/Restaurantes">Restaurante</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="~/Home/Sugerencias">Sugerencias</a>
+                  </li>
+                </ul>    
+              
+            
+          
+        
         </div>
+
+        </div>
+
+        <div class="col-lg-3">
+          
+
+            @{
+                    if(ViewBag.Usuario==null)
+                    {
+                        
+                          <a asp-action="InicioSesion" asp-controller="Client" class = "btn btn-secondary" type="button">Iniciar Sesion</a>
+                        
+                            
+                        
+
+                    }
+                    else
+                    {
+                  
+                  
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Usuario
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <button class="dropdown-item" type="button" asp-action="Salir" asp-controller="Client">Salir</button>
+                          
+                        </div>
+                      </div>
+
+                   }
+            }
+              
+            </div>
+        </div>
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
       </div>
     </nav>
-
-    
-
     <div class="container body-content">
         @RenderBody()
         <hr />

@@ -5,46 +5,63 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Trabajo.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace Trabajo.Controllers
 {
     public class ClientController : Controller
     {
 
-        public IActionResult InicioClient()
+        private readonly ReadyToEatContext _context;
+        public ClientController(ReadyToEatContext context)
+        {
+            this._context = context;
+        }
+
+        public IActionResult InicioSesion()
         {
             return View();
         }
         
         [HttpPost]
-        public IActionResult InicioClient(InicioR c)
+        public IActionResult InicioSesion(InicioR c)
         {
-            if(!ModelState.IsValid){
+            if(ModelState.IsValid){
                 
                 return RedirectToAction("Nosotros","Home");
 
             }
             return View(c);
         }
-        public IActionResult RegistroClient()
+        public IActionResult RegistroRestaurante()
         {
-            return View();
+            ViewBag.Usuario= HttpContext.Session.GetString("NombreUsuario");
+            return View();  
         }
         
 
         
         [HttpPost]
-        public IActionResult RegistroClient(Restaurante c)
+        public IActionResult RegistroRestaurante(Restaurante r)
         {
-            if(!ModelState.IsValid){
+            if(ModelState.IsValid){
+
+                _context.Add(r);
+                _context.SaveChanges();
+                HttpContext.Session.SetString("NombreUsuario", r.Ini.NombreUsuario);
+                    
                 
                 return RedirectToAction("Nosotros","Home");
 
             }
-            return View(c);
+            return View(r);
         }
 
-
+        public IActionResult Salir()
+        {
+            return View("About","Home");
+        }       
 
     }
 }

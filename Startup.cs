@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Trabajo.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Trabajo
 {
@@ -31,7 +33,16 @@ namespace Trabajo
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             
+            services.AddDistributedMemoryCache();
+            
+            services.AddSession(options=>
+            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+            });
 
+             services.AddDbContext<ReadyToEatContext>(options => options.UseMySql(Configuration.GetConnectionString("Default")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

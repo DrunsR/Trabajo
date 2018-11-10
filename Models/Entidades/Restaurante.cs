@@ -7,11 +7,11 @@ namespace Trabajo.Models
     {
 
         [BindProperty]
-		public InicioR Inicio { get; set; }
+		public InicioR Ini { get; set; }
         public int InicioRId { get; set; }
 
         [Required]
-        public string name { get; set; }
+        public string nombre { get; set; }
         [Required]
         public string apellido { get; set; }
 
@@ -26,7 +26,9 @@ namespace Trabajo.Models
         public string RUC { get; set; }
 
         [Required]
-        public string confirm_pasword { get; set; }
+        public string confirm_password { get; set; }
+        
+        public string foto { get; set; }
         
     }
 }
