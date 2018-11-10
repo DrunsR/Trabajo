@@ -24,42 +24,84 @@
 								<form id="register" action="~/Client/RegistroRestaurante" method="post" role="form">
 									
 										@Html.ValidationSummary()
-									
-									<div class="form-group">
-										<input type="text" name="Ini.NombreUsuario" id="username" tabindex="1" class="form-control" placeholder="Usuario" value="">
+									<div class="form-group row">
+                                        <label for="name" class="col-sm-2 col-form-label">Nombre :</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Nombre del Propietario" value="">
+                                        </div>
+										
 									</div>
-									<div class="form-group">
-										<input type="text" name="nombre" id="nombre" tabindex="1" class="form-control" placeholder="Nombres" value="">
+                                     <div class="form-group row">
+                                        <label for="apellido" class="col-sm-2 col-form-label">Apellido :</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="apellido" id="apellido" tabindex="1" class="form-control" placeholder="Apellido del Propietario" value="">
+                                        </div>
+                                    </div>
+                                     <div class="form-group row">
+										<label for="username" class="col-sm-2 col-form-label">Usuario :</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Usuario" value="">
+                                        </div>
 									</div>
-									<div class="form-group">
-										<input type="text" name="apellido" id="apellido" tabindex="1" class="form-control" placeholder="Apellidos" value="">
+									<div class="form-group row">
+										<label for="email" class="col-sm-2 col-form-label">Email :</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value="">
+                                        </div>
 									</div>
-									
-									<div class="form-group">
-										<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Correo electronico" value="">
+                                    <div class="form-group row">
+										<label for="telefono" class="col-sm-2 col-form-label">Telefono :</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="telefono" id="telefono" tabindex="1" class="form-control" placeholder="Telefono" value="">
+                                        </div>
 									</div>
-									<div class="form-group">
-										<input type="text" name="telefono" id="telefono" tabindex="1" class="form-control" placeholder="Apellidos" value="">
+                                    <div class="form-group row">
+										<label for="nomnbretienda" class="col-sm-2 col-form-label">Nomb del Restaurant :</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="nombretienda" id="nombretienda" tabindex="1" class="form-control" placeholder="Nombre de Restaurante" value="">
+                                        </div>
 									</div>
-									<div class="form-group">
-										<input type="text" name="direccion" id="direccion" tabindex="1" class="form-control" placeholder="Ubicacion del restaurante" value="">
+                                    <div class="form-group row">
+                                        <label for="imagen" class="col-sm-2 col-form-label">Imagen Referencial :</label>
+                                        <div class="col-sm-10">
+                                        <input type="file" class="form-control-file" id="imagen">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+										<label for="direccion" class="col-sm-2 col-form-label">Direccion :</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="direccion" id="direccion" tabindex="1" class="form-control" placeholder="Direccion" value="">
+                                        </div>
 									</div>
-									<div class="form-group">
-										<input type="text" name="RUC" id="RUC" tabindex="1" class="form-control" placeholder="RUC" value="">
+                                    <div class="form-group row">
+										<label for="ruc" class="col-sm-2 col-form-label">RUC :</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="ruc" id="ruc" tabindex="1" class="form-control" placeholder="RUC" value="">
+                                        </div>
 									</div>
-									<div class="form-group">
-										<input type="password" name="Ini.Contraseña" id="password" tabindex="2" class="form-control" placeholder="Contraseña">
+                                    <div class="form-group row">
+                                        <label for="descripcion" class="col-sm-2 col-form-label">Descripcion :</label>
+                                        <div class="col-sm-10">
+                                             <textarea class="form-control" name="descripcion" id="descripcion" rows="3" placeholder="Descripcion" value=""></textarea>
+                                        </div>
+                                       
+                                     </div>
+									<div class="form-group row">
+										<label for="password1" class="col-sm-2 col-form-label">Contraseña:</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" name="password1" id="password1" tabindex="1" class="form-control" placeholder="Contraseña" value="">
+                                        </div>
 									</div>
-									<div class="form-group">
-										<input type="password" name="confirm_password" id="confirm_password" tabindex="2" class="form-control" placeholder="Confirmar contraseña">
+									<div class="form-group row">
+										<label for="password2" class="col-sm-2 col-form-label">Confirmar Contraseña :</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" name="password2" id="password2" tabindex="1" class="form-control" placeholder="Confirme contraseña" value="">
+                                        </div>
 									</div>
-									<div class="form-group">
-										<input type="text" name="foto" id="foto" tabindex="3" class="form-control" placeholder="Foto de Restaurante">
-									</div>
-									<div class="form-group">
+									<div class="form-group row">
 										<div class="row">
 											<div class="col-sm-6 col-sm-offset-3">
-												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-dark" value="Crear cuenta">
+												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Crear cuenta">
 											</div>
 										</div>
 									</div>
