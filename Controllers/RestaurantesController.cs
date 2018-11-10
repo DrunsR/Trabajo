@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Trabajo.Controllers
 {
-    public class RestaurantesController : Controller
+    public class RestaurantesController : SecretController
     {
         public IActionResult Restaurantes()
         {

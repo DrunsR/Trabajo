@@ -27,8 +27,11 @@ namespace Trabajo.Models
 
         [Required]
         public string confirm_password { get; set; }
-        
+        [Required]
+        public string nombreTienda { get; set; }
+        [Required]
         public string foto { get; set; }
+        public string descripcion { get; set; }
         
     }
 }

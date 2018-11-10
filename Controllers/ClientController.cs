@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Trabajo.Controllers
 {
-    public class ClientController : Controller
+    public class ClientController : SecretController
     {
 
         private readonly ReadyToEatContext _context;
@@ -28,6 +28,8 @@ namespace Trabajo.Controllers
         public IActionResult InicioSesion(InicioR c)
         {
             if(ModelState.IsValid){
+
+                HttpContext.Session.SetString("NombreUsuario", "Hola");
                 
                 return RedirectToAction("Nosotros","Home");
 
@@ -49,7 +51,7 @@ namespace Trabajo.Controllers
 
                 _context.Add(r);
                 _context.SaveChanges();
-                HttpContext.Session.SetString("NombreUsuario", r.Ini.NombreUsuario);
+                HttpContext.Session.SetString("NombreUsuario", r.Ini.Usuario);
                     
                 
                 return RedirectToAction("Nosotros","Home");
@@ -60,7 +62,8 @@ namespace Trabajo.Controllers
 
         public IActionResult Salir()
         {
-            return View("About","Home");
+            HttpContext.Session.Clear();
+            return RedirectToAction("Nosotros","Home");
         }       
 
     }

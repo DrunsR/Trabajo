@@ -11,7 +11,7 @@ namespace Trabajo.Models
         public int Id { get; set; } 
 
         [Required]
-        public string NombreUsuario { get; set; }
+        public string Usuario { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

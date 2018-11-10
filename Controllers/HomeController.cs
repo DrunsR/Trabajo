@@ -8,7 +8,7 @@ using Trabajo.Models;
 
 namespace Trabajo.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : SecretController
     {
         public IActionResult Nosotros()
         {
