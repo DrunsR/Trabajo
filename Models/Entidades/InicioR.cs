@@ -17,9 +17,9 @@ namespace Trabajo.Models
         [DataType(DataType.Password)]
         public string Contraseña { get; set; }
         
-        public Restaurante restaurante{ get; set; }
+        
 
-        public int restauranteId{ get; set; }
+       
 
     }
 }

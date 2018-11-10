@@ -5,7 +5,7 @@ namespace Trabajo.Models
 {
     public class Restaurante
     {
-
+        public int Id { get; set; } 
         [BindProperty]
 		public InicioR Ini { get; set; }
         public int InicioRId { get; set; }

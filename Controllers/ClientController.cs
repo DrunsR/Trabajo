@@ -29,7 +29,7 @@ namespace Trabajo.Controllers
         {
             if(ModelState.IsValid){
 
-                HttpContext.Session.SetString("NombreUsuario", "Hola");
+                HttpContext.Session.SetString("NombreUsuario", c.Usuario);
                 
                 return RedirectToAction("principalrestaurantes","Restaurantes");
 
