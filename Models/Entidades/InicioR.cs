@@ -6,19 +6,21 @@ using System.Web;
 
 namespace Trabajo.Models
 {
-    public class Restaurante
+    public class InicioR
     {
-        [Required]
-        public string Nombre { get; set; }
-        [Required]
-        public string Apellido { get; set; }
+        public int Id { get; set; } 
+
         [Required]
         [EmailAddress]
-        public string Correo { get; set; }
+        public string UserName { get; set; }
+
         [Required]
+        [DataType(DataType.Password)]
         public string Contraseña { get; set; }
-        [Required]
-        public string Contraseña2 { get; set; }
+        
+        public Restaurante restaurante{ get; set; }
+
+        public int restauranteId{ get; set; }
 
     }
 }

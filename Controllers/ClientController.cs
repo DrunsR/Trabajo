@@ -17,7 +17,7 @@ namespace Trabajo.Controllers
         }
         
         [HttpPost]
-        public IActionResult InicioClient(Cliente c)
+        public IActionResult InicioClient(InicioR c)
         {
             if(!ModelState.IsValid){
                 
@@ -26,19 +26,15 @@ namespace Trabajo.Controllers
             }
             return View(c);
         }
-        public IActionResult InicioRestaurant()
+        public IActionResult RegistroClient()
         {
             return View();
         }
         
-        [HttpPost]
-        public IActionResult InicioRestaurant(Restaurante r)
-        {
-            return View();
-        }
+
         
         [HttpPost]
-        public IActionResult RegistroClient(registrocliente c)
+        public IActionResult RegistroClient(Restaurante c)
         {
             if(!ModelState.IsValid){
                 
@@ -47,12 +43,7 @@ namespace Trabajo.Controllers
             }
             return View(c);
         }
-        
-        [HttpPost]
-        public IActionResult RegistroRestaurant(Restaurante r)
-        {
-            return View();
-        }
+
 
 
     }
