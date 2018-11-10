@@ -31,7 +31,7 @@ namespace Trabajo.Controllers
 
                 HttpContext.Session.SetString("NombreUsuario", "Hola");
                 
-                return RedirectToAction("Nosotros","Home");
+                return RedirectToAction("principalrestaurantes","Restaurantes");
 
             }
             return View(c);
@@ -54,7 +54,7 @@ namespace Trabajo.Controllers
                 HttpContext.Session.SetString("NombreUsuario", r.Ini.Usuario);
                     
                 
-                return RedirectToAction("Nosotros","Home");
+                return RedirectToAction("principalrestaurantes","Restaurantes");
 
             }
             return View(r);

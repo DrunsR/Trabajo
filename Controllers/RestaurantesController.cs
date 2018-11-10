@@ -12,5 +12,13 @@ namespace Trabajo.Controllers
         {
             return View();
         }
+        public IActionResult agregarmenu()
+        {
+            return View();
+        }
+        public IActionResult principalrestaurantes()
+        {
+            return View();
+        }
     }
 }
