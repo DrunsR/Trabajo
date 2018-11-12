@@ -31,13 +31,13 @@ namespace Trabajo.Controllers
             return View();
         }
 
-public IActionResult Comentarios()
+        public IActionResult Sugerencias()
         {
             ViewBag.Registro = new SelectList(_context.Restaurante, "Id", "nombretienda");
             return View();
         }
         [HttpPost]
-        public IActionResult Sugerencia(Sugerencia com)
+        public IActionResult Sugerencias(Sugerencia com)
         {
             if(ModelState.IsValid){
                 
