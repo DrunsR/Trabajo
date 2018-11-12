@@ -33,7 +33,7 @@ namespace Trabajo.Controllers
 
         public IActionResult Sugerencias()
         {
-            ViewBag.Registro = new SelectList(_context.Restaurante, "Id", "nombretienda");
+            ViewBag.Registro = new SelectList(_context.Restaurante, "Id", "nombreTienda");
             return View();
         }
         [HttpPost]
