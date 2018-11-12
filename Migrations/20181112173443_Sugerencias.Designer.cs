@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Trabajo.Models;
 
 namespace Trabajo.Migrations
 {
     [DbContext(typeof(ReadyToEatContext))]
-    partial class ReadyToEatContextModelSnapshot : ModelSnapshot
+    [Migration("20181112173443_Sugerencias")]
+    partial class Sugerencias
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
