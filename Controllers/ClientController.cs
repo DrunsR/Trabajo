@@ -54,11 +54,14 @@ namespace Trabajo.Controllers
                 HttpContext.Session.SetString("NombreUsuario",r.ini.Usuario);
                     
                 
-                return RedirectToAction("principalrestaurantes","Restaurantes");
+                return RedirectToAction("Principal","Restaurantes");
 
             }
             return View(r);
         }
+
+
+
 
         public IActionResult Salir()
         {

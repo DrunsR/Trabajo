@@ -4,12 +4,21 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Trabajo.Models;
+using Trabajo.Models.Entidades;
 
 namespace Trabajo.Controllers
 {
     public class HomeController : SecretController
     {
+
+        private readonly ReadyToEatContext _context;
+
+        public HomeController(ReadyToEatContext context)
+        {
+            this._context = context;
+        }
         public IActionResult Nosotros()
         {
             return View();
@@ -22,12 +31,29 @@ namespace Trabajo.Controllers
             return View();
         }
 
-        public IActionResult Sugerencias()
+public IActionResult Comentarios()
         {
-            
-
+            ViewBag.Registro = new SelectList(_context.Restaurante, "Id", "nombretienda");
             return View();
         }
+        [HttpPost]
+        public IActionResult Sugerencia(Sugerencia com)
+        {
+            if(ModelState.IsValid){
+                
+                _context.Sugerencia.Add(com);
+                _context.SaveChanges();
 
+                return RedirectToAction("Inicio");
+            }
+            return View();
+        }
+        public IActionResult Inicio()
+        {
+            var lista = _context.Restaurante.OrderByDescending(b => b.Id)
+                                       .ToList();
+
+            return View(lista);
+        }
     }
 }
