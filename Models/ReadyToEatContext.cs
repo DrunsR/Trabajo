@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Trabajo.Models.Entidades;
 
 namespace Trabajo.Models
 {
@@ -19,6 +20,7 @@ namespace Trabajo.Models
 
         public DbSet<Restaurante> Restaurante { get; set; }
         public DbSet<InicioR> InicioR { get; set; }
+        public DbSet<RegistroMenu> RegistroMenus{get;set;}
     }       
         
     
