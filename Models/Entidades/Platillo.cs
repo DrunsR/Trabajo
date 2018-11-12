@@ -2,8 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Trabajo.Models.Entidades
 {
-    public class RegistroMenu
+    public class Platillo
     {
+        
         public int Id { get; set; }
         [Required]
         public string Nombre  { get; set; }

@@ -20,7 +20,7 @@ namespace Trabajo.Models
 
         public DbSet<Restaurante> Restaurante { get; set; }
         public DbSet<InicioR> InicioR { get; set; }
-        public DbSet<RegistroMenu> RegistroMenus{get;set;}
+        public DbSet<Platillo> RegistroMenus{get;set;}
     }       
         
     

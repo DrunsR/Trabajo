@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Trabajo.Migrations
 {
-    public partial class Conexion : Migration
+    public partial class Conexiones : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,12 +15,10 @@ namespace Trabajo.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     nombre = table.Column<string>(nullable: false),
                     apellido = table.Column<string>(nullable: false),
-                    Usuario = table.Column<string>(nullable: true),
                     email = table.Column<string>(nullable: false),
                     telefono = table.Column<int>(nullable: false),
                     direccion = table.Column<string>(nullable: false),
                     RUC = table.Column<string>(nullable: false),
-                    Ini_Contraseña = table.Column<string>(nullable: false),
                     confirm_password = table.Column<string>(nullable: false),
                     nombreTienda = table.Column<string>(nullable: false),
                     foto = table.Column<string>(nullable: false),
@@ -78,7 +76,8 @@ namespace Trabajo.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_InicioR_regId",
                 table: "InicioR",
-                column: "regId");
+                column: "regId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_RegistroMenus_regId",

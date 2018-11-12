@@ -16,7 +16,7 @@ namespace Trabajo.Migrations
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Trabajo.Models.Entidades.RegistroMenu", b =>
+            modelBuilder.Entity("Trabajo.Models.Entidades.Platillo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -55,7 +55,8 @@ namespace Trabajo.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("regId");
+                    b.HasIndex("regId")
+                        .IsUnique();
 
                     b.ToTable("InicioR");
                 });
@@ -65,13 +66,8 @@ namespace Trabajo.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Ini_Contraseña")
-                        .IsRequired();
-
                     b.Property<string>("RUC")
                         .IsRequired();
-
-                    b.Property<string>("Usuario");
 
                     b.Property<string>("apellido")
                         .IsRequired();
@@ -103,10 +99,10 @@ namespace Trabajo.Migrations
                     b.ToTable("Restaurante");
                 });
 
-            modelBuilder.Entity("Trabajo.Models.Entidades.RegistroMenu", b =>
+            modelBuilder.Entity("Trabajo.Models.Entidades.Platillo", b =>
                 {
                     b.HasOne("Trabajo.Models.Restaurante", "reg")
-                        .WithMany()
+                        .WithMany("Menu")
                         .HasForeignKey("regId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -114,8 +110,8 @@ namespace Trabajo.Migrations
             modelBuilder.Entity("Trabajo.Models.InicioR", b =>
                 {
                     b.HasOne("Trabajo.Models.Restaurante", "reg")
-                        .WithMany()
-                        .HasForeignKey("regId")
+                        .WithOne("ini")
+                        .HasForeignKey("Trabajo.Models.InicioR", "regId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

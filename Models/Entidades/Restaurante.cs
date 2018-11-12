@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
+using Trabajo.Models;
+using Trabajo.Models.Entidades;
 
 namespace Trabajo.Models
 {
@@ -12,7 +15,9 @@ namespace Trabajo.Models
         [Required]
         public string apellido { get; set; }
 
-        public string Usuario { get; set; }
+        public InicioR ini { get; set; }
+        
+
         [Required]
         [EmailAddress]
         public string email{ get; set; }
@@ -24,14 +29,16 @@ namespace Trabajo.Models
         public string RUC { get; set; }
 
         [Required]
-         public string Ini_Contraseña  { get; set; }
-        [Required]
         public string confirm_password { get; set; }
         [Required]
         public string nombreTienda { get; set; }
         [Required]
         public string foto { get; set; }
         public string descripcion { get; set; }
+
+        public List<Platillo> Menu { get; set; }
+
+
         
     }
 }
