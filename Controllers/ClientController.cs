@@ -51,7 +51,7 @@ namespace Trabajo.Controllers
 
                 _context.Add(r);
                 _context.SaveChanges();
-                HttpContext.Session.SetString("NombreUsuario",r.ini.Usuario);
+                HttpContext.Session.SetString("NombreUsuario",r.nombre);
                     
                 
                 return RedirectToAction("Principal","Restaurantes");
