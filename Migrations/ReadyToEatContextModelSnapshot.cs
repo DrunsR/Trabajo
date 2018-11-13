@@ -69,14 +69,14 @@ namespace Trabajo.Migrations
                     b.Property<string>("Contraseña")
                         .IsRequired();
 
+                    b.Property<int>("RestauranteId");
+
                     b.Property<string>("Usuario")
                         .IsRequired();
 
-                    b.Property<int>("regId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("regId")
+                    b.HasIndex("RestauranteId")
                         .IsUnique();
 
                     b.ToTable("InicioR");
@@ -104,8 +104,7 @@ namespace Trabajo.Migrations
                     b.Property<string>("email")
                         .IsRequired();
 
-                    b.Property<string>("foto")
-                        .IsRequired();
+                    b.Property<string>("foto");
 
                     b.Property<string>("nombre")
                         .IsRequired();
@@ -139,7 +138,7 @@ namespace Trabajo.Migrations
                 {
                     b.HasOne("Trabajo.Models.Restaurante", "reg")
                         .WithOne("ini")
-                        .HasForeignKey("Trabajo.Models.InicioR", "regId")
+                        .HasForeignKey("Trabajo.Models.InicioR", "RestauranteId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -8,6 +8,8 @@ namespace Trabajo.Models
 {
     public class Restaurante
     {
+        [BindProperty]
+        public InicioR ini { get; set; }
         public int Id { get; set; }
 
         [Required]
@@ -15,13 +17,13 @@ namespace Trabajo.Models
         [Required]
         public string apellido { get; set; }
 
-        public InicioR ini { get; set; }
+        
         
 
         [Required]
         [EmailAddress]
         public string email{ get; set; }
-        [Required]
+        
         public int telefono { get; set; }
         [Required]
         public string direccion { get; set; }

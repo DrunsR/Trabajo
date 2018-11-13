@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Trabajo.Migrations
 {
-    public partial class Conexiones : Migration
+    public partial class ConexionAndTablas : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -21,7 +21,7 @@ namespace Trabajo.Migrations
                     RUC = table.Column<string>(nullable: false),
                     confirm_password = table.Column<string>(nullable: false),
                     nombreTienda = table.Column<string>(nullable: false),
-                    foto = table.Column<string>(nullable: false),
+                    foto = table.Column<string>(nullable: true),
                     descripcion = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -37,14 +37,14 @@ namespace Trabajo.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Usuario = table.Column<string>(nullable: false),
                     Contraseña = table.Column<string>(nullable: false),
-                    regId = table.Column<int>(nullable: false)
+                    RestauranteId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_InicioR", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_InicioR_Restaurante_regId",
-                        column: x => x.regId,
+                        name: "FK_InicioR_Restaurante_RestauranteId",
+                        column: x => x.RestauranteId,
                         principalTable: "Restaurante",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -73,16 +73,43 @@ namespace Trabajo.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Sugerencia",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    asunto = table.Column<string>(nullable: true),
+                    RestId = table.Column<int>(nullable: true),
+                    RegistroRestId = table.Column<int>(nullable: false),
+                    detalle = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sugerencia", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Sugerencia_Restaurante_RestId",
+                        column: x => x.RestId,
+                        principalTable: "Restaurante",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_InicioR_regId",
+                name: "IX_InicioR_RestauranteId",
                 table: "InicioR",
-                column: "regId",
+                column: "RestauranteId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_RegistroMenus_regId",
                 table: "RegistroMenus",
                 column: "regId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sugerencia_RestId",
+                table: "Sugerencia",
+                column: "RestId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -92,6 +119,9 @@ namespace Trabajo.Migrations
 
             migrationBuilder.DropTable(
                 name: "RegistroMenus");
+
+            migrationBuilder.DropTable(
+                name: "Sugerencia");
 
             migrationBuilder.DropTable(
                 name: "Restaurante");
