@@ -52,14 +52,16 @@ namespace Trabajo.Controllers
         public IActionResult RegistroRestaurante(Restaurante r)
         {
             if(ModelState.IsValid){
-
-                _context.Add(r);
-                _context.SaveChanges();
-                HttpContext.Session.SetString("NombreUsuario",r.ini.Usuario);
+                var ini = _context.Restaurante.FirstOrDefault(x => x.ini.Usuario == r.ini.Usuario || x.email == r.email || x.RUC==r.RUC);
+                if( ini == null && r.ini.Contraseña.ToString()== r.confirm_password.ToString()){
+                    _context.Add(r);
+                    _context.SaveChanges();
+                    HttpContext.Session.SetString("NombreUsuario",r.ini.Usuario);
+                        
                     
-                
-                return RedirectToAction("Principal","Restaurantes");
-
+                    return RedirectToAction("Principal","Restaurantes");
+                }
+                return View(r);
             }
             return View(r);
         }
