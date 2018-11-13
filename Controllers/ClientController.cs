@@ -28,11 +28,15 @@ namespace Trabajo.Controllers
         public IActionResult InicioSesion(InicioR c)
         {
             if(ModelState.IsValid){
+                var ini = _context.InicioR.FirstOrDefault(x => x.Usuario == c.Usuario && x.Contraseña == c.Contraseña.ToString());
+                if( ini != null){
 
-                HttpContext.Session.SetString("NombreUsuario", c.Usuario);
-                
-                return RedirectToAction("principalrestaurantes","Restaurantes");
-
+                    HttpContext.Session.SetString("NombreUsuario", c.Usuario);
+                    
+                    return RedirectToAction("Principal","Restaurantes");
+                }
+                ModelState.AddModelError("Incorrecto", "Contraseña o usuario Erroneo");
+                return View(c);
             }
             return View(c);
         }
@@ -51,7 +55,7 @@ namespace Trabajo.Controllers
 
                 _context.Add(r);
                 _context.SaveChanges();
-                HttpContext.Session.SetString("NombreUsuario",r.nombre);
+                HttpContext.Session.SetString("NombreUsuario",r.ini.Usuario);
                     
                 
                 return RedirectToAction("Principal","Restaurantes");
