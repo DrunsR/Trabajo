@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Trabajo.Models;
-using Trabajo.Models.Entidades;
-namespace Trabajo.Models.Entidades
+namespace Trabajo.Models
 {
     public class Sugerencia
     {

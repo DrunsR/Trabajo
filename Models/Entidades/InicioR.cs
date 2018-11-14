@@ -10,10 +10,10 @@ namespace Trabajo.Models
     {
         public int Id { get; set; } 
 
-        [Required]
+        [Required (ErrorMessage = "Falta ingresar el usuario")]
         public string Usuario { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Falta ingresar la contraseña")]
         [DataType(DataType.Password)]
         public string Contraseña { get; set; }
         public Restaurante reg {get; set;}

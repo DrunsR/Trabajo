@@ -36,6 +36,7 @@ namespace Trabajo.Controllers
                     return RedirectToAction("Principal","Restaurantes");
                 }
                 ModelState.AddModelError("Incorrecto", "Contraseña o usuario Erroneo");
+
                 return View(c);
             }
             return View(c);
@@ -51,9 +52,12 @@ namespace Trabajo.Controllers
         [HttpPost]
         public IActionResult RegistroRestaurante(Restaurante r)
         {
+            
+            
             if(ModelState.IsValid){
-                var ini = _context.Restaurante.FirstOrDefault(x => x.ini.Usuario == r.ini.Usuario || x.email == r.email || x.RUC==r.RUC);
-                if( ini == null && r.ini.Contraseña.ToString()== r.confirm_password.ToString()){
+                var refR = _context.Restaurante.FirstOrDefault(x => x.ini.Usuario == r.ini.Usuario || x.email == r.email || x.RUC==r.RUC);
+               
+                if( refR == null && r.ini.Contraseña.ToString()== r.confirm_password.ToString()){
                     _context.Add(r);
                     _context.SaveChanges();
                     HttpContext.Session.SetString("NombreUsuario",r.ini.Usuario);
@@ -61,8 +65,27 @@ namespace Trabajo.Controllers
                     
                     return RedirectToAction("Principal","Restaurantes");
                 }
+                if(refR.ini.Usuario==r.ini.Usuario){
+                    ModelState.AddModelError("UserError", "Usuario ya existe");
+                }
+                else if(refR.email==r.email){
+                    ModelState.AddModelError("Incorrecto", "El Email que ha ingresado esta en uso");
+                }
+                else if(refR.RUC==r.RUC){
+                    ModelState.AddModelError("Incorrecto", "El Nro de RUC ingresado esta en uso");
+                }
+                else if(r.ini.Contraseña.ToString()== r.confirm_password.ToString()){
+                    ModelState.AddModelError("Incorrecto", "Las contraseña no coinciden");
+                }
+                
+
+                    
+                              
                 return View(r);
             }
+
+            
+            
             return View(r);
         }
 
