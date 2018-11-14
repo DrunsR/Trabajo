@@ -49,7 +49,6 @@ namespace Trabajo.Controllers
                 _context.Add(p);
                 _context.SaveChanges();
 
-                HttpContext.Session.SetString("NombreUsuario", UsuarioName);
                    
                 return RedirectToAction("Principal","Restaurantes");
                 
@@ -64,7 +63,6 @@ namespace Trabajo.Controllers
             var UsuarioName = HttpContext.Session.GetString("NombreUsuario");
 
             var user = _context.Restaurante.FirstOrDefault(x => x.ini.Usuario == UsuarioName);
-            HttpContext.Session.SetString("NombreUsuario", UsuarioName);
 
             return View(user);
         }
