@@ -40,10 +40,10 @@ namespace Trabajo.Controllers
         {
             if(ModelState.IsValid){
                 
-                _context.Sugerencia.Add(com);
+                _context.Add(com);
                 _context.SaveChanges();
 
-                return RedirectToAction("Inicio");
+                return RedirectToAction("Nosotros","Home"); 
             }
             return View();
         }
