@@ -2,11 +2,63 @@
 
     <h2> @Model.nombreTienda </h2>
     <h3>Menu</h3>
-    <div class="col-md-6 col-md-offset-2" style="margin:0 auto">
-    @foreach (var a in Model.Menu){
-        <p> @a.Nombre  </p>
-        <p> @a.Precio  </p>
-        <p> @a.Imagen  </p>     
-    }
-    </div>
 
+
+<div class="container">
+
+   <div class="row">    
+    <div id="carouselExampleIndicators" class="carousel slide col-md-9" data-ride="carousel" style="margin: 0 auto">
+        <ol class="carousel-indicators">
+            @{  Int32 r = 0; 
+            foreach (var a in Model.Menu){ 
+                
+                
+                if(r == 0 ){
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                }
+                else{
+                    <li data-target="#carouselExampleIndicators" data-slide-to="@r"></li>           
+                }
+                r += 1;
+            }
+            }
+        </ol>
+        <div class="carousel-inner">
+            @{Int32 r2 = 0;
+            foreach(var a in Model.Menu){ 
+                
+                if(r2 == 0 ){
+                    <div asp-area="" class="carousel-item active">
+                        <img asp-area="" class="d-block w-100" src="@a.Imagen" alt="First slide">
+                        <div asp-area="" class="carousel-caption d-none d-md-block text-primary">
+                            <h5>@a.Nombre</h5>
+                            <p>Costo : S/ @a.Precio</p>
+                            <p>@a.Descripcion</p>
+                        </div>
+                    </div>
+                }
+                else{
+                    <div asp-area="" class="carousel-item" >
+                        <img asp-area="" class="d-block w-100" src="@a.Imagen" alt="First slide">
+                        <div asp-area="" class="carousel-caption d-none d-md-block text-primary">
+                            <h5>@a.Nombre</h5>
+                            <p>Costo : S/ @a.Precio</p>
+                            <p>@a.Descripcion</p>
+                        </div>
+                    </div>         
+                }
+                r2 += 1;
+            }
+            }
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+   </div>
+</div>

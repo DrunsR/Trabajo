@@ -64,7 +64,7 @@ namespace Trabajo.Controllers
 
             var UsuarioName = HttpContext.Session.GetString("NombreUsuario");
 
-            var user = _context.Restaurante.FirstOrDefault(x => x.ini.Usuario == UsuarioName);
+            var user = _context.Restaurante.Include(x=>x.Recomendaciones).FirstOrDefault(x => x.ini.Usuario == UsuarioName);
 
             return View(user);
         }

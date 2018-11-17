@@ -47,12 +47,6 @@ namespace Trabajo.Controllers
             }
             return View();
         }
-        public IActionResult Inicio()
-        {
-            var lista = _context.Restaurante.OrderByDescending(b => b.Id)
-                                       .ToList();
 
-            return View(lista);
-        }
     }
 }

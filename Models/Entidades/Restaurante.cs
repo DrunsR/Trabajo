@@ -44,6 +44,7 @@ namespace Trabajo.Models
         public string descripcion { get; set; }
 
         public List<Platillo> Menu { get; set; }
+        public List<Sugerencia> Recomendaciones { get; set; }
 
 
         

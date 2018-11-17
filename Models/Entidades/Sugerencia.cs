@@ -7,8 +7,9 @@ namespace Trabajo.Models
 
         public int Id { get; set; }
         public string asunto { get; set; }
-         public Restaurante Rest { get; set; }
-        public int RegistroRestId { get; set; }
         public string detalle { get; set; }
+        public Restaurante Rest { get; set; }
+        public int RestId { get; set; }
+        
     }
 }

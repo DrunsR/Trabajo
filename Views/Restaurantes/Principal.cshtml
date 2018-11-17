@@ -1,10 +1,97 @@
 @model Restaurante;
-<h1>Esta pagina sera a la que se redireccione una vez  el usuario de restaurante inicie sesion</h1>
-<p>Hola @Model.nombre</p>
-<div class="row">
-	<div class="col-xs-6">
-		<button id="login-form-link" class="btn btn-register"><a asp-area="" asp-controller="Restaurantes" asp-action="agregarmenu">Agregar menu</a></button>
-		
-	
-	</div>
-</div>
+<h1 class="text-center">@Model.nombre  Bienvenido a Ready to Eat !!!</h1>
+<br>
+
+
+<div class="container-fluid">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img height="250" src="@Model.foto" alt="" style="margin-bottom: 20px"/>
+                        </div>
+						<div>
+                            <button id="login-form-link" class="btn btn-register"><a asp-area="" asp-controller="Restaurantes" asp-action="agregarmenu">Agregar menu</a></button>
+                        </div>
+                    </div>
+					<div class="col-md-1" ></div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h4>
+                                        @Model.nombre @Model.apellido
+                                    </h4>
+                                    <h5>
+                                        @Model.nombreTienda
+                                    </h5>
+									<br>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Comments</a>
+                                </li>
+                            </ul>
+							<br>
+                        </div>
+						<div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>@Model.nombre @Model.apellido</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>@Model.email</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Phone</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>@Model.telefono</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Address</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>@Model.direccion</p>
+                                            </div>
+                                        </div>
+										<div class="row">
+                                            <div class="col-md-6">
+                                                <label>RUC</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>@Model.RUC</p>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        @foreach(var sug in Model.Recomendaciones)
+										{											
+										<div class="row">
+                                            <div class="col-md-6">
+                                                <label>@sug.asunto</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>@sug.detalle</p>
+                                            </div>
+                                        </div>
+										}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>           
+        </div>
