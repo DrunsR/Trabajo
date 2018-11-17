@@ -22,14 +22,16 @@ namespace Trabajo.Controllers
 
         public IActionResult Restaurantes()
         {
-            return View();
-        }
-        public IActionResult menus()
-        {
-
-            var Lista = _context.Restaurante.Include(x => x.Menu).ToList();
+            var Lista = _context.Restaurante.ToList();
 
             return View(Lista);
+            
+        }
+        public IActionResult menus(int id)
+        {
+
+            var res = _context.Restaurante.Include(x=>x.Menu).FirstOrDefault(x => x.Id == id);
+            return View(res);
         }
         public IActionResult agregarmenu()
         {

@@ -1,11 +1,12 @@
-@model List<Restaurante>
+@model Restaurante
 
-@foreach(var res in Model){
-    <h2> @res.nombreTienda </h2>
+    <h2> @Model.nombreTienda </h2>
     <h3>Menu</h3>
-    @foreach (var a in res.Menu){
+    <div class="col-md-6 col-md-offset-2" style="margin:0 auto">
+    @foreach (var a in Model.Menu){
         <p> @a.Nombre  </p>
         <p> @a.Precio  </p>
-        <p> @a.Imagen  </p>
+        <p> @a.Imagen  </p>     
     }
-}
+    </div>
+
